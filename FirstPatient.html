@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>健康福祉 TEST</title>
+  <!--link rel="Shortcut Icon" type="image/x-icon" href="tcsh logo.gif" /-->
+  <meta charset="utf-8">
+  <script src="XMLPROCESSOR NEW TCSH.js"></script>
+  <script src="HTTP_IO.js"></script>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;    
+}
+</style>
+</head>
+<body>
+<div align="center">
+  <h1>健康福祉</h1>
+  
+
+
+<form id="orderForm1">
+<table style="width:70%">
+  <tr>
+    <td>姓名：</td>
+    <td><input type="text" name="tx_PatientName"></td>
+    <td>出生年月日：</td>
+    <td><input type="date" name="tx_DateofBirth"></td>
+    <td>性別：</td>
+    <td> 
+      <select name="rd_PatientGender">
+      <option disabled selected value> -- 請選擇 -- </option>
+      <option value="rd_male">男</option> 
+      <option value="rd_female">女</option> 
+      <option value="rd_other">其他</option> 
+      <option value="rd_unknown">不知道</option> 
+    </td>
+  </tr>
+  <tr>
+    <td>身分證字號：</td>
+    <td><input type="text" name="tx_PatientID"></td>
+    <td>病歷號碼：</td>
+    <td><input type="text" name="tx_Patient Medical record number"></td>
+    <td>電子信箱：</td>
+    <td><input type="text" name="tx_PatientEmail"></td> 
+  </tr>
+  <tr>
+    <td>住址：</td>
+    <td colspan="5"><input style="width:99%" type="text" name="tx_PatientAddress"></td>
+  </tr>
+  <tr>
+    <td>聯絡電話：</td>
+    <td><input type="text" name="tx_TelePhoneofPatient"></td>
+    <td>血型：</td>
+    <td><input type="text" name="tx_bloodgroup"></td>
+    <td>特殊身份：</td>
+    <td><input type="text" name="tx_Special ID"></td>
+  </tr>
+  <tr>
+    <td>學歷：</td>
+    <td>
+      <select name="rd_education">
+      <option disabled selected value> -- 請選擇 -- </option>
+      <option value="rd_education_1">不識字</option>
+      <option value="rd_education_2">識字</option> 
+      <option value="rd_education_3">小學</option>
+      <option value="rd_education_4">國中</option>
+      <option value="rd_education_5">高中職</option>
+      <option value="rd_education_6">大專</option>
+      <option value="rd_education_7">研究所以上</option>
+    </select>
+    </td>
+    <td>職業：</td>
+    <td>
+      <select name="rd_occupation">
+      <option disabled selected value> -- 請選擇 -- </option>
+      <option value="rd_occupation_1">農</option> 
+      <option value="rd_occupation_2">工</option>
+      <option value="rd_occupation_3">商</option>
+      <option value="rd_occupation_4">軍</option>
+      <option value="rd_occupation_5">公</option>
+      <option value="rd_occupation_6">教</option>
+      <option value="rd_occupation_7">自由業</option>
+      <option value="rd_occupation_8">無業</option>
+      <option value="rd_occupation_9">學生</option>
+      <option value="rd_occupation_10">其他</option>
+    </td>
+    <td>常用語言：</td>
+    <td>
+      <select name="rd_language">
+      <option disabled selected value> -- 請選擇 -- </option>
+      <option value="rd_language_1">國語</option> 
+      <option value="rd_language_2">台語</option> 
+      <option value="rd_language_3">客家語</option> 
+      <option value="rd_language_other">其他</option> 
+    </td>
+    </tr>
+
+  <!--<tr>
+    <td colspan="6"><h2 align="center">個人資料使用同意書</h2></td>
+  </tr>-->
+</table>
+</form>
+<input type="button" onclick="aaa()" value="提交">
+</div>
+</body>
+
+<script>
+    function aaa() {
+        var xmlStr;
+        xmlStr = formInputsToXML('orderForm1');
+        alert(xmlStr);
+        HTTPPostData("Post.aspx?id=TCSH-3", xmlStr);
+    }
+
+    //先取得網址字串，假設此頁網址為「index.aspx?id=U001&name=GQSM」
+    var url = location.href;
+
+    //再來用去尋找網址列中是否有資料傳遞(QueryString)
+    if(url.indexOf('?')!=-1){
+        var id = "";
+        //在此直接將各自的參數資料切割放進ary中
+        var ary = url.split('?')[1].split('&');
+        //此時ary的內容為：
+        //ary[0] = 'id=U001'，ary[1] = 'name=GQSM'
+    
+        //下迴圈去搜尋每個資料參數
+        for(i=0;i<=ary.length-1;i++){
+            //如果資料名稱為id的話那就把他取出來
+            if(ary[i].split('=')[0] = 'id')
+                id = ary[i].split('=')[1];
+        } 
+    }
+</script>
+
+</html>

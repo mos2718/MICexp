@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="ekg36000.js"></script>
+</head>
+<body>
+
+<canvas id="myCanvas" width="1800" height="800" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+function drawGrid() {
+
+
+// Draw V lines
+
+ctx.beginPath();
+ctx.strokeStyle="#FF0000";
+for(i=0;i<1800;i=i+36)
+{ctx.moveTo(i,0);
+ ctx.lineTo(i,800);
+}
+
+for(i=0;i<800; i=i+40)
+{ctx.moveTo(0,i);
+ ctx.lineTo(1800,i);
+}
+ctx.stroke();
+
+ctx.beginPath();
+ctx.lineWidth= 3;
+for(i=-1;i<=800; i=i+200)
+{
+ctx.moveTo(0,i);
+ctx.lineTo(1800,i);
+}
+for(i=-1;i<=1800; i=i+360)
+{
+ctx.moveTo(i,0);
+ctx.lineTo(i,800);
+}
+
+ctx.stroke();
+}
+function drawECG() {
+ctx.beginPath();
+ctx.strokeStyle="#0000FF";
+var offest, xScale,yScale,numPoint;
+offest =0;
+yScale = 0.02;
+xScale = 0.5;
+numPoint = 1800/xScale;
+ctx.moveTo(0,400 -ECGdat[offest]*yScale);
+for(i=0;i<numPoint;i++)
+   { ctx.lineTo(i*xScale,400 -ECGdat[i+offest]*yScale);  }
+ctx.stroke();
+}
+
+ drawGrid();
+  drawECG();
+
+</script>
+
+</body>
+</html>

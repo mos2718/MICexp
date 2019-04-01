@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	<meta charset="utf-8">	
+	</head>
+	<body>
+	分鐘:
+    <form>
+	<select id="score">
+　		<option value="1"selected="true">1</option>
+　		<option value="5">5</option>
+        <option value="10">10</option>
+	</select>
+    
+	<table border="2">
+		<tr>
+			<td></td><td>0分</td><td>1分</td><td>2分</td>
+		</tr>
+		<tr>
+			<td>Color</td>			
+			<td><button  id="Appearance0" type="button" value="The baby's whole body is completely bluish-gray or pale" onclick='change("Appearance","0")' style="width:250px;height:50px" name="LA6722-8">全身泛藍</button></td>
+			<td><button  id="Appearance1" type="button"  value="Good color in body with bluish hands or feet" onclick='change("Appearance","1")' style="width:250px;height:50px" name="LA6723-6">手足呈藍 身幹粉紅</button></td> 
+			<td><button  id="Appearance2"  type="button" value="Good color all over"  onclick='change("Appearance","2")' style="width:250px;height:50px" name="LA6724-4">無發紺 身幹及手足粉紅</button></td> 			
+		</tr>
+		
+		<tr>
+			<td>Heart Rate</td> 
+			<td><button id="Pulse0" type="button" value="No heart rate" onclick='change("Pulse","0")'style="width:250px;height:50px" name="LA6716-0">無</button></td> 
+			<td><button id="Pulse1" type="button" value="Fewer than 100 beats per minute" onclick='change("Pulse","1")'style="width:250px;height:50px" name="LA6720-2"><100</button></td> 
+			<td><button id="Pulse2" type="button" value="At least 100 beats per minute" onclick='change("Pulse","2")'style="width:250px;height:50px" name="LA6718-6">>100</button></td> 
+		</tr>
+		<tr>
+			<td>Reflex Irritability</td> 
+			<td><button id="Grimace0" type="button" value="No response to airways being suctioned" onclick='change("Grimace", "0")'style="width:250px;height:50px" name="LA6719-4">對刺激無反應</button></td> 
+			<td><button id="Grimace1" type="button" value="Grimace during suctioning" onclick='change("Grimace", "1")'style="width:250px;height:50px" name="LA6721-0">刺激時會哭泣</button></td> 
+			<td><button id="Grimace2" type="button" value="Grimace and pulling away, cough, or sneeze during suctioning" onclick='change("Grimace", "2")'style="width:250px;height:50px" name="LA6721-0">刺激時會噴嗤/咳/拉開</button></td> 
+		</tr>
+		<tr>
+			<td>Muscle Tone</td> 
+			<td><button id="Activity0" type="button" value="Limp; no movement" onclick='change("Activity", "0")' style="width:250px;height:50px" name="LA6713-7">無</button></td> 
+			<td><button id="Activity1"type="button" value="Some flexion of arms and legs" onclick='change("Activity", "1")' style="width:250px;height:50px" name="LA6714-5">關節部份收摺</button></td> 
+			<td><button id="Activity2"type="button" value="Active motion" onclick='change("Activity", "2")' style="width:250px;height:50px" name="LA6715-2">活動</button></td> 
+		<tr>
+			<td>Respiratory effort</td> 
+			<td><button id="Respiration0" type="button" value="Not breathing" onclick='change("Respiration", "0")' style="width:250px;height:50px" name="LA6725-1">無</button></td> 
+			<td><button id="Respiration1" type="button" value="Weak cry; may sound like whimpering, slow or irregular breathing" onclick='change("Respiration", "1")' style="width:250px;height:50px" name="LA6726-9">弱小或不規則</button></td> 
+			<td><button id="Respiration2" type="button" value="Good, strong cry; normal rate and effort of breathing" onclick='change("Respiration", "2")' style="width:250px;height:50px" name="LA6727-7">強</button></td> 
+		</tr>
+		
+	</table>
+	</form>
+	<footer>
+		<button onclick="myFunction()">送出</button>
+	</footer>
+    <script language="JavaScript">
+        var appearance=null,pulse=null,grimace=null,activity=null,respiration=null;
+		var appearance1,pulse1,grimace1,activity1,respiration1;
+		function change(name, id)
+		{			
+            document.getElementById(name + "0").style.backgroundColor = "white";
+            document.getElementById(name + "1").style.backgroundColor = "white";
+            document.getElementById(name + "2").style.backgroundColor = "white";
+            document.getElementById(name + id).style.backgroundColor = "yellow";
+			if(name=="Appearance")
+			{
+				if(document.getElementById("score").value==1)
+					appearance=myFunction1("32406-1","1 minute Apgar Color","249227004","Apgar color score",id,document.getElementById(name + id).name,document.getElementById(name + id).value);
+				else
+				    appearance=myFunction1("32411-1","5 minute Apgar Color","249227004","Apgar color score",id,document.getElementById(name + id).name,document.getElementById(name + id).value);
+				appearance1=id;
+			}
+			else if(name=="Pulse")
+			{
+				if(document.getElementById("score").value==1)
+					pulse=myFunction1("32407-9","1 minute Apgar Heart Rate","249223000","Apgar heart rate score",id,document.getElementById(name + id).name,document.getElementById(name + id).value);
+				else
+					pulse=myFunction1("32412-9","5 minute Apgar Heart Rate","249223000","Apgar heart rate score",id,document.getElementById(name + id).name,document.getElementById(name + id).value);
+				pulse1=id;
+			}				
+			else if(name=="Grimace")
+			{
+				if(document.getElementById("score").value==1)
+					grimace=myFunction1("32409-5","1 minute Apgar Reflex Irritability","249226008","Apgar response to stimulus score",id,document.getElementById(name + id).name,document.getElementById(name + id).value);
+				else
+					grimace=myFunction1("32414-5","5 minute Apgar Reflex Irritability","249226008","Apgar response to stimulus score",id,document.getElementById(name + id).name,document.getElementById(name + id).value);
+				grimace1=id;
+			}
+			else if(name=="Activity")
+			{
+				if(document.getElementById("score").value==1)
+					activity=myFunction1("32408-7","1 minute Apgar Muscle Tone","249225007","Apgar muscle tone score",id,document.getElementById(name + id).name,document.getElementById(name + id).value);
+				else
+					activity=myFunction1("32413-7","5 minute Apgar Muscle Tone","249225007","Apgar muscle tone score",id,document.getElementById(name + id).name,document.getElementById(name + id).value);
+				activity1=id;
+			}
+			else if(name=="Respiration")
+			{
+				if(document.getElementById("score").value==1)
+					respiration=myFunction1("32410-3","1 minute Apgar Respiratory effort","249224006","Apgar respiratory effort score",id,document.getElementById(name + id).name,document.getElementById(name + id).value);
+				else
+					respiration=myFunction1("32415-2","5 minute Apgar Respiratory effort","249224006","Apgar respiratory effort score",id,document.getElementById(name + id).name,document.getElementById(name + id).value);
+				respiration1=id;
+			}
+        }
+		function myFunction1(minid,min,uid,uidname,score,scoreid,scorename) 
+		{
+			var string1="<component>\n<code>\n<coding>\n<system value=\"http://loinc.org\"/>\n<code value=\""+minid+"\"/>\n<display value=\""+min+"\"/>\n</coding>\n"
+						+"<coding>\n<system value=\"http://snomed.info/sct\"/>\n<code value=\""+uid+"\"/>\n<display value=\""+uidname+"\"/>\n</coding>\n<text value=\""+uidname+"\"/>\n</code>\n"
+						+"<valueCodeableConcept>\n<coding>\n<extension url=\"http://hl7.org/fhir/StructureDefinition/iso21090-CO-value\"/>\n<valueDecimal value=\""+score+"\"/>\n</extension>\n<system value=\"http://loinc.org/la\"/>\n<code value=\""+scoreid+"\"/>\n<display value=\""+scorename+"\"/>\n</coding>\n"
+						+"<coding>\n<system value=\"http:/acme.ped/apgarcolor\"/>\n<code value=\""+scoreid+"\"/>\n</coding>\n<text value=\""+score+"."+scorename+"\"/>\n</code>\n</valueCodeableConcept>\n</component>\n";
+			return string1;
+		}
+		function myFunction() 
+		{
+			var count=parseInt(appearance1)+parseInt(pulse1)+parseInt(grimace1)+parseInt(activity1)+parseInt(respiration1);
+			var NowDate = new Date();
+			var mm=NowDate.getMonth()+1;
+			var httppost;
+			NowDate=+NowDate.getFullYear()+"-"+mm+"-"+NowDate.getDate()+"T"+NowDate.getHours()+":"+NowDate.getMinutes()+":"+NowDate.getSeconds()+"Z";
+			var string="<Observation xmlns=\"http://hl7.org/fhir\">\n"+"<id value=\""+document.getElementById("score").value+"minute-apgar-score\"/>\n<category>\n<coding>\n<system value=\"http://hl7.org/fhir/observation-category\"/>\n<code value=\"survey\"/>\n<display value=\"Survey\"/>"+ 
+						"\n</coding>\n<text value=\"Survey\"/>\n</category>\n<code>\n<coding>\n<system value=\"http://loinc.org\"/>\n<code value=\"";
+			if(document.getElementById("score").value==1)
+				string=string+"9272-6"+"\"/>\n<display value=\"1";
+			else
+				string=string+"9274-2"+"\"/>\n<display value=\"5";
+			string=string+"minute Apgar Score\"/>\n</coding>\n<coding>\n<system value=\"http://snomed.info/sct\"/>\n<code value=\"";
+			if(document.getElementById("score").value==1)
+				string=string+"169895004\"/>\n<display value=\"Apgar at 1 minute\"/>\n</coding>\n<text value=\"1 minute Apgar Score\"/>\n</code>";
+			else
+				string=string+"169909004\"/>\n<display value=\"Apgar at 5 minute\"/>\n</coding>\n<text value=\"5 minute Apgar Score\"/>\n</code>";
+			string=string+"<subject>\n<reference value=\"#newborn\"/>\n</subject>\n<effectiveDateTime value=\""+NowDate+"\"/>\n<performer>\n<reference value=\"Practitioner/example\"/>\n</performer>\n"+
+				 "<valueQuantity>\n<value value=\""+count+"\"/>\n<system value=\"http://unitsofmeasure.org\"/>\n<code value=\"{score}\"/>\n</valueQuantity>\n";
+			if(appearance==null | pulse==null | grimace==null | activity==null | respiration==null)
+				alert("未填寫完");
+			else
+			{
+				httppost=string+appearance+pulse+grimace+activity+respiration+"</Observation>";
+				alert(httppost);
+			}
+		}
+	</script>
+	
+	</body>
+</html>
